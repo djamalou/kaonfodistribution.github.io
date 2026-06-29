@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAONFO DISTRIBUTION</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --orange:#E8600A;
+    --orange-dark:#B84A04;
+    --orange-light:#FFF0E6;
+    --black:#111111;
+    --gray-dark:#2A2A2A;
+    --gray:#555;
+    --gray-light:#F5F5F5;
+    --white:#FFFFFF;
+    --font-display:'Barlow Condensed',sans-serif;
+    --font-body:'Inter',sans-serif;
+  }
+  body{font-family:var(--font-body);color:var(--black);background:var(--white);font-size:15px;line-height:1.6;}
+  nav{background:var(--black);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
+  .nav-logo{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--white);letter-spacing:1px;}
+  .nav-logo span{color:var(--orange);}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{color:#ccc;text-decoration:none;font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--orange);}
+  .nav-cta{background:var(--orange);color:var(--white);border:none;padding:9px 20px;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;text-transform:uppercase;letter-spacing:0.5px;}
+  .hero{background:var(--black);padding:80px 5% 70px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:0;right:0;width:45%;height:100%;background:linear-gradient(135deg,#1a1a1a 0%,#2d1a00 100%);clip-path:polygon(15% 0,100% 0,100% 100%,0% 100%);}
+  .hero-content{position:relative;z-index:1;max-width:560px;}
+  .hero-eyebrow{display:inline-block;background:var(--orange);color:var(--white);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:5px 14px;border-radius:2px;margin-bottom:20px;}
+  .hero h1{font-family:var(--font-display);font-size:58px;font-weight:900;color:var(--white);line-height:1.0;text-transform:uppercase;margin-bottom:20px;}
+  .hero h1 em{color:var(--orange);font-style:normal;}
+  .hero-sub{color:#aaa;font-size:16px;line-height:1.7;margin-bottom:32px;max-width:440px;}
+  .hero-buttons{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{background:var(--orange);color:var(--white);padding:14px 28px;border-radius:4px;font-weight:700;font-size:14px;text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;display:inline-block;}
+  .btn-secondary{background:transparent;color:var(--white);padding:13px 28px;border-radius:4px;font-weight:600;font-size:14px;text-decoration:none;border:1.5px solid #444;text-transform:uppercase;letter-spacing:0.5px;display:inline-block;}
+  .hero-stats{display:flex;gap:40px;margin-top:50px;padding-top:40px;border-top:1px solid #2a2a2a;}
+  .stat-num{font-family:var(--font-display);font-size:36px;font-weight:800;color:var(--orange);}
+  .stat-label{font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;}
+  section{padding:72px 5%;}
+  .section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--orange);margin-bottom:10px;}
+  .section-title{font-family:var(--font-display);font-size:38px;font-weight:800;text-transform:uppercase;color:var(--black);line-height:1.1;margin-bottom:14px;}
+  .section-sub{color:var(--gray);font-size:15px;max-width:520px;line-height:1.7;}
+  .products{background:var(--gray-light);}
+  .products-header{margin-bottom:44px;}
+  .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+  .product-card{background:var(--white);border-radius:8px;overflow:hidden;border:1px solid #e8e8e8;transition:transform 0.2s,box-shadow 0.2s;}
+  .product-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.1);}
+  .product-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;}
+  .product-img.orange{background:var(--orange-light);}
+  .product-img.dark{background:#1a1a1a;}
+  .product-badge{position:absolute;top:12px;right:12px;background:var(--orange);color:var(--white);font-size:10px;font-weight:700;padding:3px 9px;border-radius:2px;text-transform:uppercase;}
+  .product-body{padding:18px 20px 20px;}
+  .product-title{font-family:var(--font-display);font-size:18px;font-weight:700;text-transform:uppercase;margin-bottom:6px;}
+  .product-desc{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:14px;}
+  .product-link{font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.5px;text-decoration:none;display:flex;align-items:center;gap:4px;}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:44px;}
+  .service-card{padding:28px 24px;border:1px solid #e8e8e8;border-radius:8px;background:var(--white);}
+  .service-icon{width:48px;height:48px;background:var(--orange-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;}
+  .service-title{font-weight:700;font-size:15px;margin-bottom:8px;text-transform:uppercase;}
+  .service-desc{font-size:13px;color:var(--gray);line-height:1.6;}
+  .why{background:var(--black);color:var(--white);}
+  .why .section-title{color:var(--white);}
+  .why .section-sub{color:#aaa;}
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;margin-top:44px;border:1px solid #2a2a2a;}
+  .why-item{padding:32px 28px;border:1px solid #2a2a2a;text-align:center;}
+  .why-num{font-family:var(--font-display);font-size:48px;font-weight:900;color:var(--orange);line-height:1;margin-bottom:8px;}
+  .why-label{font-size:13px;color:#aaa;line-height:1.5;}
+  .contact{background:var(--orange);}
+  .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .contact .section-label{color:rgba(255,255,255,0.7);}
+  .contact .section-title{color:var(--white);}
+  .contact .section-sub{color:rgba(255,255,255,0.85);}
+  .contact-info{margin-top:32px;display:flex;flex-direction:column;gap:16px;}
+  .contact-item{display:flex;align-items:center;gap:14px;}
+  .contact-icon{width:44px;height:44px;background:rgba(255,255,255,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .contact-text{color:var(--white);}
+  .contact-text strong{display:block;font-size:14px;font-weight:700;}
+  .contact-text span{font-size:13px;opacity:0.8;}
+  .contact-form{background:var(--white);padding:36px;border-radius:12px;}
+  .form-title{font-family:var(--font-display);font-size:22px;font-weight:700;text-transform:uppercase;margin-bottom:22px;color:var(--black);}
+  .form-group{margin-bottom:16px;}
+  .form-group label{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--gray-dark);margin-bottom:6px;}
+  .form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid #e0e0e0;border-radius:6px;font-size:14px;font-family:var(--font-body);outline:none;transition:border-color 0.2s;}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--orange);}
+  .form-group textarea{resize:none;height:90px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .btn-form{background:var(--orange);color:var(--white);border:none;width:100%;padding:14px;border-radius:6px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;cursor:pointer;margin-top:4px;}
+  .btn-form:hover{background:var(--orange-dark);}
+  footer{background:#0a0a0a;padding:40px 5% 28px;color:#888;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding-bottom:28px;border-bottom:1px solid #1f1f1f;margin-bottom:24px;}
+  .footer-logo{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);}
+  .footer-logo span{color:var(--orange);}
+  .footer-tagline{font-size:12px;color:#555;margin-top:4px;}
+  .footer-links{display:flex;gap:24px;list-style:none;}
+  .footer-links a{color:#666;text-decoration:none;font-size:13px;}
+  .footer-links a:hover{color:var(--orange);}
+  .footer-bottom{text-align:center;font-size:12px;color:#444;}
+  .wa-float{position:fixed;bottom:28px;right:28px;background:#25D366;color:var(--white);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;z-index:999;box-shadow:0 4px 16px rgba(37,211,102,0.4);}
+  @media(max-width:768px){
+    .hero h1{font-size:38px;}
+    .hero::before{display:none;}
+    .contact-inner{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-inner{flex-direction:column;text-align:center;}
+    nav{padding:0 4%;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">KAONFO <span>DISTRIBUTION</span></div>
+  <ul class="nav-links">
+    <li><a href="#produits">Produits</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Demander un devis</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">Burkina Faso — Ouagadougou</span>
+    <h1>Expert en <em>pompes</em> de distribution</h1>
+    <p class="hero-sub">Vente, installation et maintenance de pompes de carburant et accessoires pour stations-service, entreprises et dépôts d'hydrocarbures.</p>
+    <div class="hero-buttons">
+      <a href="#produits" class="btn-primary">Voir nos produits</a>
+      <a href="#contact" class="btn-secondary">Nous contacter</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">500+</div><div class="stat-label">Pompes installées</div></div>
+      <div><div class="stat-num">10+</div><div class="stat-label">Ans d'expérience</div></div>
+      <div><div class="stat-num">24h</div><div class="stat-label">Support réactif</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="produits">
+  <div class="products-header">
+    <p class="section-label">Notre catalogue</p>
+    <h2 class="section-title">Nos produits</h2>
+    <p class="section-sub">Des équipements de qualité pour tous vos besoins en distribution de carburant.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-img orange"><span>⛽</span><span class="product-badge">Bestseller</span></div>
+      <div class="product-body">
+        <div class="product-title">Pompes de distribution</div>
+        <p class="product-desc">Pompes simple et double face pour stations-service. Marques reconnues, haute fiabilité.</p>
+        <a href="#contact" class="product-link">Demander un devis →</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img orange"><span>🔧</span></div>
+      <div class="product-body">
+        <div class="product-title">Pistolets & tuyaux</div>
+        <p class="product-desc">Pistolets automatiques, tuyaux flexibles renforcés et raccords pour toutes marques de pompes.</p>
+        <a href="#contact" class="product-link">Demander un devis →</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img orange"><span>📊</span></div>
+      <div class="product-body">
+        <div class="product-title">Compteurs & afficheurs</div>
+        <p class="product-desc">Compteurs volumétriques mécaniques et électroniques, afficheurs de prix homologués.</p>
+        <a href="#contact" class="product-link">Demander un devis →</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img dark"><span>🏗️</span><span class="product-badge">Pro</span></div>
+      <div class="product-body">
+        <div class="product-title">Pièces de rechange</div>
+        <p class="product-desc">Stock permanent de pièces détachées pour garantir la continuité de votre activité.</p>
+        <a href="#contact" class="product-link">Demander un devis →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <p class="section-label">Ce que nous faisons</p>
+  <h2 class="section-title">Nos services</h2>
+  <p class="section-sub">Un accompagnement complet de l'installation jusqu'à la maintenance.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🔩</div>
+      <div class="service-title">Installation</div>
+      <p class="service-desc">Installation professionnelle de vos pompes et équipements selon les normes en vigueur au Burkina Faso.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛠️</div>
+      <div class="service-title">Maintenance</div>
+      <p class="service-desc">Contrats de maintenance préventive et curative pour garantir la disponibilité de vos équipements.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <div class="service-title">Conseil & devis</div>
+      <p class="service-desc">Étude de vos besoins et recommandations personnalisées pour le choix de vos équipements.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚚</div>
+      <div class="service-title">Livraison</div>
+      <p class="service-desc">Livraison sur Ouagadougou, Bobo-Dioulasso et dans toutes les régions du pays.</p>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="apropos">
+  <p class="section-label">Pourquoi choisir Kaonfo</p>
+  <h2 class="section-title">La référence au Burkina Faso</h2>
+  <p class="section-sub">Nous accompagnons les stations-service, entreprises minières, sociétés de BTP et transporteurs depuis plus de 10 ans.</p>
+  <div class="why-grid">
+    <div class="why-item"><div class="why-num">500+</div><div class="why-label">Pompes installées dans tout le pays</div></div>
+    <div class="why-item"><div class="why-num">10+</div><div class="why-label">Années d'expertise dans le secteur</div></div>
+    <div class="why-item"><div class="why-num">24h</div><div class="why-label">Délai de réponse pour les urgences</div></div>
+    <div class="why-item"><div class="why-num">100%</div><div class="why-label">Équipements testés et garantis</div></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <p class="section-label">Contactez-nous</p>
+      <h2 class="section-title">Demandez votre devis gratuit</h2>
+      <p class="section-sub">Notre équipe vous répond rapidement pour tout besoin en pompes, accessoires ou maintenance.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-text">
+            <strong>Numéro principal</strong>
+            <span>+226 70 60 00 07</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div class="contact-text">
+            <strong>WhatsApp</strong>
+            <span>+226 70 37 05 80</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-text">
+            <strong>Notre adresse</strong>
+            <span>Ouagadougou, Burkina Faso</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-text">
+            <strong>Horaires</strong>
+            <span>Lundi – Samedi : 7h30 – 18h00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-title">Envoyer un message</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nom complet</label>
+            <input type="text" placeholder="Votre nom">
+          </div>
+          <div class="form-group">
+            <label>Téléphone</label>
+            <input type="tel" placeholder="+226 ...">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Entreprise</label>
+          <input type="text" placeholder="Nom de votre entreprise">
+        </div>
+        <div class="form-group">
+          <label>Vous êtes intéressé par</label>
+          <select>
+            <option>Pompes de distribution</option>
+            <option>Accessoires (pistolets, tuyaux...)</option>
+            <option>Pièces de rechange</option>
+            <option>Service de maintenance</option>
+            <option>Installation complète</option>
+            <option>Autre demande</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Décrivez votre besoin..."></textarea>
+        </div>
+        <button class="btn-form">Envoyer la demande</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">KAONFO <span>DISTRIBUTION</span></div>
+      <div class="footer-tagline">Spécialiste des pompes de carburant au Burkina Faso</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#produits">Produits</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">© 2025 KAONFO DISTRIBUTION — Ouagadougou, Burkina Faso — Tél : +226 70 60 00 07 — WhatsApp : +226 70 37 05 80</div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/22670370580" target="_blank" title="Nous contacter sur WhatsApp">💬</a>
+
+</body>
+</html>
