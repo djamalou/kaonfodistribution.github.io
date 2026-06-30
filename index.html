@@ -149,18 +149,20 @@
   </div>
   <div class="products-grid">
     <div class="product-card">
-      <div class="product-img orange"><span>⛽</span><span class="product-badge">Bestseller</span></div>
+      <div class="product-img orange" style="padding:0;overflow:hidden;"><img src="images/pompe-lanfeng.jpeg" alt="Pompe de distribution Lanfeng" style="width:100%;height:100%;object-fit:cover;"><span class="product-badge">Bestseller</span></div>
       <div class="product-body">
-        <div class="product-title">Pompes de distribution</div>
-        <p class="product-desc">Pompes simple et double face pour stations-service. Marques reconnues, haute fiabilité.</p>
+        <div class="product-title">Pompe de distribution Lanfeng</div>
+        <p class="product-desc">Pompe à carburant avec écran de commande digital, modèle blanc et rouge. Livrée neuve, emballée et protégée. Idéale pour stations-service.</p>
+        <p style="font-size:13px;font-weight:700;color:var(--orange);margin-bottom:10px;">Prix : <span style="color:var(--gray);font-weight:500;">[Indiquer le prix ici]</span></p>
         <a href="#contact" class="product-link">Demander un devis →</a>
       </div>
     </div>
     <div class="product-card">
-      <div class="product-img orange"><span>🔧</span></div>
+      <div class="product-img orange" style="padding:0;overflow:hidden;"><img src="images/clapets.jpeg" alt="Clapets pour pompes de distribution" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="product-body">
-        <div class="product-title">Pistolets & tuyaux</div>
-        <p class="product-desc">Pistolets automatiques, tuyaux flexibles renforcés et raccords pour toutes marques de pompes.</p>
+        <div class="product-title">Clapets pour pompes</div>
+        <p class="product-desc">Clapets robustes en fonte pour pompes de distribution de carburant, disponibles en plusieurs finitions. Pièces durables, idéales pour le remplacement ou la maintenance.</p>
+        <p style="font-size:13px;font-weight:700;color:var(--orange);margin-bottom:10px;">Prix : <span style="color:var(--gray);font-weight:500;">[Indiquer le prix ici]</span></p>
         <a href="#contact" class="product-link">Demander un devis →</a>
       </div>
     </div>
@@ -234,14 +236,14 @@
           <div class="contact-icon">📱</div>
           <div class="contact-text">
             <strong>Numéro principal</strong>
-            <span>+226 70 60 00 07</span>
+            <span><a href="tel:+22670600007" style="color:inherit;text-decoration:none;">+226 70 60 00 07</a></span>
           </div>
         </div>
         <div class="contact-item">
           <div class="contact-icon">💬</div>
           <div class="contact-text">
             <strong>WhatsApp</strong>
-            <span>+226 70 37 05 80</span>
+            <span><a href="https://wa.me/22670370580" target="_blank" style="color:inherit;text-decoration:none;">+226 70 37 05 80</a></span>
           </div>
         </div>
         <div class="contact-item">
@@ -266,20 +268,20 @@
         <div class="form-row">
           <div class="form-group">
             <label>Nom complet</label>
-            <input type="text" placeholder="Votre nom">
+            <input type="text" id="f-nom" placeholder="Votre nom">
           </div>
           <div class="form-group">
             <label>Téléphone</label>
-            <input type="tel" placeholder="+226 ...">
+            <input type="tel" id="f-tel" placeholder="+226 ...">
           </div>
         </div>
         <div class="form-group">
           <label>Entreprise</label>
-          <input type="text" placeholder="Nom de votre entreprise">
+          <input type="text" id="f-entreprise" placeholder="Nom de votre entreprise">
         </div>
         <div class="form-group">
           <label>Vous êtes intéressé par</label>
-          <select>
+          <select id="f-interet">
             <option>Pompes de distribution</option>
             <option>Accessoires (pistolets, tuyaux...)</option>
             <option>Pièces de rechange</option>
@@ -290,9 +292,9 @@
         </div>
         <div class="form-group">
           <label>Message</label>
-          <textarea placeholder="Décrivez votre besoin..."></textarea>
+          <textarea id="f-message" placeholder="Décrivez votre besoin..."></textarea>
         </div>
-        <button class="btn-form">Envoyer la demande</button>
+        <button class="btn-form" onclick="envoyerWhatsApp()">Envoyer la demande</button>
       </div>
     </div>
   </div>
@@ -314,6 +316,31 @@
 </footer>
 
 <a class="wa-float" href="https://wa.me/22670370580" target="_blank" title="Nous contacter sur WhatsApp">💬</a>
+
+<script>
+function envoyerWhatsApp(){
+  var nom = document.getElementById('f-nom').value.trim();
+  var tel = document.getElementById('f-tel').value.trim();
+  var entreprise = document.getElementById('f-entreprise').value.trim();
+  var interet = document.getElementById('f-interet').value;
+  var message = document.getElementById('f-message').value.trim();
+
+  if(!nom || !tel){
+    alert("Merci de renseigner au moins votre nom et votre numéro de téléphone.");
+    return;
+  }
+
+  var texte = "Bonjour KAONFO DISTRIBUTION,%0A%0A";
+  texte += "Nom : " + nom + "%0A";
+  texte += "Téléphone : " + tel + "%0A";
+  if(entreprise){ texte += "Entreprise : " + entreprise + "%0A"; }
+  texte += "Intérêt : " + interet + "%0A";
+  if(message){ texte += "Message : " + message + "%0A"; }
+
+  var lienWhatsApp = "https://wa.me/22670370580?text=" + texte;
+  window.open(lienWhatsApp, "_blank");
+}
+</script>
 
 </body>
 </html>
